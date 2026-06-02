@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+}
+
+/* Containeres */
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#kanban {
+  margin-top: 3rem;
+  height: 500px;
+  width: 1125px;
+  display: grid;
+  grid-template-columns: 13% 13% 13% 13% 13% 13% 13%;
+  justify-content: center;
+  column-gap: 10px;
+  padding: 18.5px;
+  background-image: linear-gradient(180deg, #f2764b, #ffffff);
+  box-shadow: 15px 15px 15px #bf7962;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+/* Cards dias da semana */
+#segunda,
+#terca,
+#quarta,
+#quinta,
+#sexta,
+#sabado,
+#domingo {
+  border: 1px solid #565c73;
+  background-image: linear-gradient(0deg, #59524f, #332723);
+  box-shadow: 5px 5px 5px black;
+  border-radius: 15px;
+  border-style: inset;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 15px;
+}
+
+/* Titúlo cards */
+
+.titulo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: content-box;
+  width: 125px;
+  height: 23px;
+  border-bottom: 1px solid whitesmoke;
+}
+.titulo > h4 {
+  font-family: "Roboto", sans-serif;
+  color: white;
+}
+
+/* Modal overlay*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.199);
+  background-color: rgba(0, 0, 0, 0.205);
+}
+
+/* Card Modal */
+.modal-content1 {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+  min-height: 50px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-content2 {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+  min-height: 50px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*Botões*/
+
+/*Fechar*/
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+/*Iniciar fluxo de adição de refeição*/
+.adcbtn {
+  margin-top: 10px;
+  width: 40px;
+  height: 40px;
+  background-color: #f2764b;
+  border: none;
+  border-radius: 100%;
+  transition: box-shadow 0.3s ease;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: 30px;
+  cursor: pointer;
+  text-align: center;
+}
+.adcbtn:hover {
+  box-shadow: 0px 0px 5px whitesmoke;
+}
