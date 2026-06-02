@@ -73,19 +73,30 @@
   background-color: rgba(0, 0, 0, 0.205);
 }
 
-/* Card Modal */
+/* Card Modal 1  */
 .modal-content1 {
   background-color: #fefefe;
+  box-sizing: border-box;
   margin: 15% auto;
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #888;
-  width: 30%;
-  min-height: 50px;
+  width: 300px;
+  min-height: 300px;
   border-radius: 15px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+#criar-refeicao{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin-left: 20px;
+  justify-content: space-around;
+  border: 1px solid red;
+
 }
 .modal-content2 {
   background-color: #fefefe;
@@ -109,6 +120,8 @@
   float: right;
   font-size: 28px;
   font-weight: bold;
+  margin-bottom: 300px;
+
 }
 .close:hover,
 .close:focus {
