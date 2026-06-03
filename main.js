@@ -7,6 +7,7 @@ import { estado } from "./app/estados.js";
 import { fecharModais } from "./ui/modal.js";
 import { atualizarKanban } from "./app/atualizarKanban.js";
 import { limparTela } from "./app/limparTela.js";
+import { voltarModal } from "./ui/modal.js";
 
 const kanban = document.getElementById("kanban"); //Setar Kanaban
 const p = new PlanoSemanal(); //Instanciar plano semanal
@@ -18,6 +19,8 @@ atualizarKanban(kanban);
 kanban.addEventListener("click", (event) => {
   if (event.target.id === "submitModel1") {
     criarRefeicao();
+    renderizarItemRefeicao();
+
   }
 
   if (event.target.id === "btnAdcItem") {
@@ -28,5 +31,8 @@ kanban.addEventListener("click", (event) => {
   if (event.target.id === "finishbtn") {
     fecharModais();
     atualizarKanban(kanban);
+  }
+  if (event.target.id == "btnVoltar"){
+    voltarModal()
   }
 });

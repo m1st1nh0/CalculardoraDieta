@@ -43,7 +43,7 @@ export function renderizarItemRefeicao() {
     const excbtn = document.createElement("button");//Cria o botão de exclusão
     //Configurações do botão de exclusão
     excbtn.className = "excbtn";
-    excbtn.textContent = "Excluir";
+    excbtn.textContent = "X";
 
     //Engatilhando botão de exclusão do item
     excbtn.addEventListener("click", () => {

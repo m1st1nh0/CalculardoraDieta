@@ -51,3 +51,11 @@ export function passarModal() {
   modal1.style.display = "none";
   modal2.style.display = "block";
 }
+export function voltarModal() {
+  const modal1 = document.getElementById("myModal1"); //Selecionando Modal 1
+  const modal2 = document.getElementById("myModal2"); // Selecionando Modal 2
+
+  //Esconde o modal 2 e exibe o modal 1
+  modal2.style.display = "none";
+  modal1.style.display = "block";
+}

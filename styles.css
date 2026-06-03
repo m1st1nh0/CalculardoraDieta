@@ -1,15 +1,18 @@
 * {
   margin: 0;
 }
+
 body {
   font-family: "Roboto", sans-serif;
 }
+
 /* Containeres */
 #container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 #kanban {
   margin-top: 3rem;
   height: 500px;
@@ -40,8 +43,7 @@ body {
   padding: 15px;
 }
 
-/* Titúlo cards */
-
+/* Titúlo cards dias */
 .titulo {
   display: flex;
   justify-content: center;
@@ -51,11 +53,12 @@ body {
   height: 23px;
   border-bottom: 1px solid whitesmoke;
 }
+
 .titulo > h4 {
   color: white;
 }
 
-/* Modal overlay*/
+/* Modal overlay */
 .modal {
   display: none;
   position: fixed;
@@ -69,9 +72,13 @@ body {
   background-color: rgba(0, 0, 0, 0.205);
 }
 
-/* Card Modal */
+/* ==========================================================
+   Card Modal 1
+   ========================================================== */
+
 .modal-content1 {
   background-color: oklch(55.108% 0.10661 136.849 / 0.975);
+  border: 1px solid rgb(20, 71, 0);
   margin: 10% auto;
   width: 330px;
   min-height: 300px;
@@ -90,12 +97,14 @@ body {
   height: 200px;
   width: 300px;
 }
+
 .titulo-criar-refeicao {
   color: #ffffff;
   border-radius: 15px;
   text-align: center;
   align-self: flex-start;
 }
+
 .input-botao-criar-refeicao {
   display: flex;
   flex-direction: column;
@@ -104,6 +113,7 @@ body {
   height: 90px;
   margin-bottom: 20px;
 }
+
 #nomeRefeicao {
   height: 30px;
   width: 150px;
@@ -115,32 +125,53 @@ body {
   color: rgb(255, 255, 255);
   margin-bottom: 20px;
 }
+
 #nomeRefeicao::placeholder {
   color: rgba(255, 255, 255, 0.041);
 }
+
 #nomeRefeicao:focus {
   border: none;
 }
+
 #submitModel1 {
+  position: relative;
   height: 70px;
   width: 70px;
   border-radius: 70px;
   border-style: none;
   border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+#submitModel1:hover {
+  bottom: 1px;
   box-shadow: 0px 5px 5px black;
 }
 
+#submitModel1:active {
+  box-shadow: none;
+  bottom: 0px;
+}
+
+/* ==========================================================
+   Card Modal 2
+   ========================================================== */
+
 .modal-content2 {
   background-color: oklch(55.108% 0.10661 136.849 / 0.975);
+  border: 1px solid rgb(20, 71, 0);
   margin: 10% auto;
-  width: 330px;
-  min-height: 300px;
+  width: 380px;
+  min-height: 500px;
   padding: 30px;
   border-radius: 30px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  box-sizing: border-box;
 }
 
 .titulo-criar-itemRefeicao {
@@ -148,10 +179,12 @@ body {
   text-align: center;
   margin-bottom: 15px;
 }
+
 .input-criar-itemRefeicao {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 }
+
 #ingrediente {
   height: 30px;
   width: 150px;
@@ -163,9 +196,10 @@ body {
   color: rgb(255, 255, 255);
   margin-right: 2px;
 }
+
 #quantidade {
   height: 30px;
-  width: 150px;
+  width: 100px;
   padding: 5px;
   background-color: lch(83.38% 66.01 133.28 / 0.737);
   border-radius: 0px 50px 50px 0px;
@@ -174,27 +208,112 @@ body {
   border: none;
   color: rgb(255, 255, 255);
 }
+
+#quantidade:focus,
+#ingrediente:focus {
+  background-color: rgba(203, 255, 181, 0.737);
+  outline: none;
+}
+
 .botao-itemRefeicao {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 15px;
 }
+
 #btnAdcItem {
-  height: 30px;
-  width: 80px;
-  border-radius: 70px;
+  background-color: lch(83.38% 66.01 133.28 / 0.737);
+  color: white;
+  height: 35px;
+  width: 35px;
+  position: relative;
+  bottom: 13px;
+  border-radius: 35px;
   border-style: none;
   border: none;
-  box-shadow: 0px 5px 5px black;
+  transition: ease-in-out 0.2s;
+}
+
+#btnAdcItem:hover {
+  bottom: 15px;
+  box-shadow: 0px 2px 5px black;
+  cursor: pointer;
+}
+
+#btnAdcItem:active,
+#finishbtn:active,
+#btnVoltar:active {
+  bottom: 0px;
+  box-shadow: none;
+}
+
+#botoes-controle-itemRefeicao {
+  width: 300px;
+  margin-top: 300px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
 }
 
 #finishbtn {
-  margin-top: 100px;
+  background-color: lch(83.38% 66.01 133.28 / 0.737);
   align-self: center;
+  border: none;
+  height: 35px;
+  border-radius: 0px 10px 10px 0px;
+  width: 150px;
 }
 
-/*Fechar card modal*/
+#btnVoltar {
+  background-color: lch(83.38% 66.01 133.28 / 0.737);
+  height: 35px;
+  border: none;
+  border-radius: 10px 0 0 10px;
+  width: 150px;
+  border-right: 1px solid oklch(55.108% 0.10661 136.849 / 0.975);
+}
+
+#finishbtn:hover,
+#btnVoltar:hover {
+  bottom: 2px;
+  box-shadow: 0px 2px 5px black;
+  cursor: pointer;
+
+}
+
+
+#tabelaItens{
+  color:#ffffff;
+  width: 340px;
+  padding: 0;
+  margin-top: 10px;
+  text-align: center;
+}
+td{
+  padding: 6px;
+  text-align: center;
+}
+
+.excbtn{
+  color: #ffffff;
+  background-color: lch(83.38% 66.01 133.28 / 0.737);
+  height: 25px;
+  width: 50px;
+  padding: 5px;
+  border-radius: 30px;
+  border: none;
+}
+.excbtn:hover{
+  cursor: pointer;
+  box-shadow: 0px 2px 5px black;
+
+}
+/* ==========================================================
+   Fechar card modal
+   ========================================================== */
+
 .close {
   margin-bottom: 150px;
   color: #aaa;
@@ -203,13 +322,18 @@ body {
   font-size: 28px;
   font-weight: bold;
 }
+
 .close:hover,
 .close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
 }
-/*Iniciar fluxo de adição de refeição*/
+
+/* ==========================================================
+   Iniciar fluxo de adição de refeição
+   ========================================================== */
+
 .adcbtn {
   margin-top: 10px;
   width: 40px;
@@ -224,6 +348,7 @@ body {
   cursor: pointer;
   text-align: center;
 }
+
 .adcbtn:hover {
   box-shadow: 0px 0px 5px whitesmoke;
 }

@@ -16,8 +16,11 @@ export function renderizarModal(kanban) {
               id="nomeRefeicao"
               placeholder="Digite o nome (Ex: Almoço)"
             />
-            <button type="button" id="submitModel1">
-              Criar 
+            <button
+              type="button"
+              id="submitModel1"
+            >
+              Criar
             </button>
           </div>
         </div>
@@ -28,33 +31,66 @@ export function renderizarModal(kanban) {
       <div class="modal-content2">
         <span class="close" style="order: 3">&times;</span>
 
-        <div id="criar-itemRefeicao" style="order: 1">
+        <div
+          id="criar-itemRefeicao"
+          style="order: 1"
+        >
           <div class="titulo-criar-itemRefeicao">
             <h4>Adicione os Ingredientes da refeição</h4>
           </div>
+
           <div class="input-criar-itemRefeicao">
             <input
               type="text"
               id="ingrediente"
               placeholder="Ingrediente"
+              class = "campo"
             />
+
             <input
               type="number"
               id="quantidade"
               placeholder="Quantidade em g"
+              class = "campo"
             />
-          </div>
-          <div class="botao-itemRefeicao">
-            <button type="button" id="btnAdcItem">
-              Adicionar
+            <div class="botao-itemRefeicao">
+            <button
+              type="button"
+              id="btnAdcItem"
+            >
+              +
             </button>
           </div>
+          </div>
+
+          
         </div>
 
-        <div id="itemRefeicao" style="order: 2"></div>
-        <button type="button" id="finishbtn" style="order: 3">
-          Finalizar Edição
-        </button> 
+        <div
+          id="itemRefeicao"
+          style="order: 2"
+        ></div>
+
+        <div
+          id="botoes-controle-itemRefeicao"
+          style="order: 2"
+        >
+          <button
+            type="button"
+            id="finishbtn"
+            style="order: 3"
+          >
+            FINALIZAR
+          </button>
+
+          <button
+            type="button"
+            id="btnVoltar"
+            style="order: 3"
+          >
+            VOLTAR
+          </button>
+        </div>
       </div>
     </div>
   `;
