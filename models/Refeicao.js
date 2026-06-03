@@ -5,10 +5,9 @@ export class Refeicao {
     this.nome = nome;
     this.itens = [];
     this.proxId = 1;
+    this.id = null;
   }
 
-
-  
   //Funções
   adicionarItem(ingrediente, peso) {
     const item = new ItemRefeicao(ingrediente, peso);

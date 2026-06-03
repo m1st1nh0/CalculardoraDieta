@@ -9,7 +9,7 @@ import { atualizarKanban } from "./app/atualizarKanban.js";
 import { limparTela } from "./app/limparTela.js";
 import { voltarModal } from "./ui/modal.js";
 
-const kanban = document.getElementById("kanban"); //Setar Kanaban
+export const kanban = document.getElementById("kanban"); //Setar Kanaban
 const p = new PlanoSemanal(); //Instanciar plano semanal
 estado.planoSemanal = p; //Setar plano semanal no estado
 

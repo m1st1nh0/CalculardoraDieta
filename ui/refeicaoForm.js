@@ -11,7 +11,7 @@ export function criarRefeicao() {
   //Instancia a refeição com o nomeRefeição
   const r = new Refeicao(nomeRefeicao);
   //Adicionar refeição ao dia selecionado
-  estado.diaSelecionado.refeicoes.push(r);
+  estado.diaSelecionado.adicionarRefeicao(r);
   //Seta refeição criada como a refeição em andamento
   estado.refeicaoEmAndamento = r;
 

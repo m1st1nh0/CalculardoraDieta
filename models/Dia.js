@@ -3,12 +3,17 @@ export class Dia {
     this.nome = nome;
     this.id = id;
     this.refeicoes = [];
+    this.proxId = 1;
   }
-
 
   //Funções
   adicionarRefeicao(refeicao) {
+    refeicao.id = this.proxId;
     this.refeicoes.push(refeicao);
-    return;
+    this.proxId++;
+    
+  }
+  excluirRefeicao(id) {
+    this.refeicoes = this.refeicoes.filter((refeicao) => refeicao.id != id);
   }
 }
