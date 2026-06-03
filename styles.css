@@ -1,7 +1,9 @@
 * {
   margin: 0;
 }
-
+body {
+  font-family: "Roboto", sans-serif;
+}
 /* Containeres */
 #container {
   display: flex;
@@ -17,9 +19,6 @@
   justify-content: center;
   column-gap: 10px;
   padding: 18.5px;
-  background-image: linear-gradient(180deg, #f2764b, #ffffff);
-  box-shadow: 15px 15px 15px #bf7962;
-  border: 1px solid black;
   border-radius: 15px;
 }
 
@@ -31,11 +30,9 @@
 #sexta,
 #sabado,
 #domingo {
-  border: 1px solid #565c73;
-  background-image: linear-gradient(0deg, #59524f, #332723);
+  background-color: lch(83.38% 66.01 133.28 / 0.737);
   box-shadow: 5px 5px 5px black;
   border-radius: 15px;
-  border-style: inset;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -55,7 +52,6 @@
   border-bottom: 1px solid whitesmoke;
 }
 .titulo > h4 {
-  font-family: "Roboto", sans-serif;
   color: white;
 }
 
@@ -75,38 +71,135 @@
 
 /* Card Modal */
 .modal-content1 {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 30%;
-  min-height: 50px;
-  border-radius: 15px;
+  background-color: oklch(55.108% 0.10661 136.849 / 0.975);
+  margin: 10% auto;
+  width: 330px;
+  min-height: 300px;
+  padding: 10px;
+  border-radius: 30px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
 }
+
+#criar-refeicao {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px;
+  width: 300px;
+}
+.titulo-criar-refeicao {
+  color: #ffffff;
+  border-radius: 15px;
+  text-align: center;
+  align-self: flex-start;
+}
+.input-botao-criar-refeicao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 90px;
+  margin-bottom: 20px;
+}
+#nomeRefeicao {
+  height: 30px;
+  width: 150px;
+  padding: 10px;
+  background-color: lch(83.38% 66.01 133.28 / 0.737);
+  border-radius: 50px;
+  text-align: center;
+  border: none;
+  color: rgb(255, 255, 255);
+  margin-bottom: 20px;
+}
+#nomeRefeicao::placeholder {
+  color: rgba(255, 255, 255, 0.041);
+}
+#nomeRefeicao:focus {
+  border: none;
+}
+#submitModel1 {
+  height: 70px;
+  width: 70px;
+  border-radius: 70px;
+  border-style: none;
+  border: none;
+  box-shadow: 0px 5px 5px black;
+}
+
 .modal-content2 {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 60%;
-  min-height: 50px;
-  border-radius: 15px;
+  background-color: oklch(55.108% 0.10661 136.849 / 0.975);
+  margin: 10% auto;
+  width: 330px;
+  min-height: 300px;
+  padding: 30px;
+  border-radius: 30px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
 }
 
-/*Botões*/
+.titulo-criar-itemRefeicao {
+  color: white;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.input-criar-itemRefeicao {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+#ingrediente {
+  height: 30px;
+  width: 150px;
+  padding: 5px;
+  background-color: lch(83.38% 66.01 133.28 / 0.737);
+  border-radius: 50px 0px 0px 50px;
+  text-align: center;
+  border: none;
+  color: rgb(255, 255, 255);
+  margin-right: 2px;
+}
+#quantidade {
+  height: 30px;
+  width: 150px;
+  padding: 5px;
+  background-color: lch(83.38% 66.01 133.28 / 0.737);
+  border-radius: 0px 50px 50px 0px;
+  margin-left: 2px;
+  text-align: center;
+  border: none;
+  color: rgb(255, 255, 255);
+}
+.botao-itemRefeicao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+#btnAdcItem {
+  height: 30px;
+  width: 80px;
+  border-radius: 70px;
+  border-style: none;
+  border: none;
+  box-shadow: 0px 5px 5px black;
+}
 
-/*Fechar*/
+#finishbtn {
+  margin-top: 100px;
+  align-self: center;
+}
+
+/*Fechar card modal*/
 .close {
+  margin-bottom: 150px;
   color: #aaa;
   float: right;
+  display: none;
   font-size: 28px;
   font-weight: bold;
 }
@@ -121,7 +214,7 @@
   margin-top: 10px;
   width: 40px;
   height: 40px;
-  background-color: #f2764b;
+  background-color: oklch(55.108% 0.10661 136.849 / 0.975);
   border: none;
   border-radius: 100%;
   transition: box-shadow 0.3s ease;
