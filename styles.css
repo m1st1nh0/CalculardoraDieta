@@ -69,31 +69,20 @@ body {
   background-color: rgba(0, 0, 0, 0.205);
 }
 
-/* Card Modal 1  */
+/* Card Modal */
 .modal-content1 {
-  background-color: #fefefe;
-  box-sizing: border-box;
-  margin: 15% auto;
-  padding: 10px;
-  border: 1px solid #888;
-  width: 300px;
+  background-color: oklch(55.108% 0.10661 136.849 / 0.975);
+  margin: 10% auto;
+  width: 330px;
   min-height: 300px;
-  border-radius: 15px;
+  padding: 10px;
+  border-radius: 30px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
-#criar-refeicao{
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  margin-left: 20px;
-  justify-content: space-around;
-  border: 1px solid red;
-
-}
 #criar-refeicao {
   display: flex;
   flex-direction: column;
@@ -213,8 +202,6 @@ body {
   display: none;
   font-size: 28px;
   font-weight: bold;
-  margin-bottom: 300px;
-
 }
 .close:hover,
 .close:focus {
