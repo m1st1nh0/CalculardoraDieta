@@ -3,8 +3,6 @@ export function renderizarModal(kanban) {
   kanban.innerHTML = `
     <div id="myModal1" class="modal">
       <div class="modal-content1">
-        <span class="close" style="order: 2">&times;</span>
-
         <div id="criar-refeicao" style="order: 1">
           <div class="titulo-criar-refeicao">
             <h2>Qual refeição você quer planejar?</h2>
@@ -29,7 +27,6 @@ export function renderizarModal(kanban) {
 
     <div id="myModal2" class="modal">
       <div class="modal-content2">
-        <span class="close" style="order: 3">&times;</span>
 
         <div
           id="criar-itemRefeicao"

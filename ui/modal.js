@@ -22,7 +22,7 @@ export function abrirModal(dia) {
 
   //Configura o estado global para o dia selecionado e exibe o modal
   estado.diaSelecionado = dia;
-  modal1.style.display = "block";
+  modal1.style.display = "flex";
 }
 
 //Adicionar gatilho para fechar modal em class .close
@@ -49,7 +49,7 @@ export function passarModal() {
 
   //Esconde o modal 1 e exibe o modal 2
   modal1.style.display = "none";
-  modal2.style.display = "block";
+  modal2.style.display = "flex";
 }
 export function voltarModal() {
   const modal1 = document.getElementById("myModal1"); //Selecionando Modal 1
@@ -57,5 +57,5 @@ export function voltarModal() {
 
   //Esconde o modal 2 e exibe o modal 1
   modal2.style.display = "none";
-  modal1.style.display = "block";
+  modal1.style.display = "flex";
 }
