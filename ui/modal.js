@@ -12,8 +12,10 @@ export function fecharModais() {
     modal2.style.display = "none";
   }
   //limpa os estados globais relacionados à seleção de dia e refeição em andamento
-  estado.diaSelecionado = null;
-  estado.refeicaoEmAndamento = null;
+  estado.setState({
+    diaSelecionado: null,
+    refeicaoEmAndamento: null,
+  });
 }
 
 //Função para abrir o modal de criação de refeição e iniciar o processo de criação de refeição para um dia específico
@@ -21,7 +23,7 @@ export function abrirModal(dia) {
   const modal1 = document.getElementById("myModal1"); //Selecionando Modal 1
 
   //Configura o estado global para o dia selecionado e exibe o modal
-  estado.diaSelecionado = dia;
+  estado.selecionarDia(dia);
   modal1.style.display = "flex";
 }
 

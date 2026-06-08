@@ -19,7 +19,6 @@ atualizarKanban(kanban);
 kanban.addEventListener("click", (event) => {
   if (event.target.id === "submitModel1") {
     criarRefeicao();
-    renderizarItemRefeicao();
 
   }
 
