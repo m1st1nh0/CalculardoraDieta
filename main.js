@@ -8,10 +8,12 @@ import { fecharModais } from "./ui/modal.js";
 import { atualizarKanban } from "./app/atualizarKanban.js";
 import { limparTela } from "./app/limparTela.js";
 import { voltarModal } from "./ui/modal.js";
+import { renderizarTotais } from "./render/renderizarTotais.js";
+
 
 export const kanban = document.getElementById("kanban"); //Setar Kanaban
 const p = new PlanoSemanal(); //Instanciar plano semanal
-estado.planoSemanal = p; //Setar plano semanal no estado
+estado.setPlanoSemanal(p) //Setar plano semanal no estado
 
 atualizarKanban(kanban);
 
@@ -30,6 +32,7 @@ kanban.addEventListener("click", (event) => {
   if (event.target.id === "finishbtn") {
     fecharModais();
     atualizarKanban(kanban);
+    renderizarTotais()
   }
   if (event.target.id == "btnVoltar"){
     voltarModal()

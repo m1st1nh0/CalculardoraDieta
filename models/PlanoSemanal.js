@@ -1,8 +1,7 @@
 import { Dia } from "./Dia.js";
 export class PlanoSemanal {
-  #dias;
+  #dias = [];
   constructor() {
-    this.#dias = [];
 
     //Instanciando os dias da semana
     const segunda = new Dia("Segunda-feira", "segunda");

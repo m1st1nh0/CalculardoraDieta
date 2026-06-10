@@ -30,5 +30,8 @@ export class StateManager {
   setRefeicaoEmAndamento(refeicao) {
     this.setState({ refeicaoEmAndamento: refeicao });
   }
+  setPlanoSemanal(plano){
+    this.setState({planoSemanal: plano})
+  }
 }
 export const estado = new StateManager();

@@ -4,6 +4,8 @@ import { ItemRefeicao } from "../models/ItemRefeicao.js";
 import { renderizarItemRefeicao } from "../render/renderizarItemRefeicao.js";
 import { Refeicao } from "../models/Refeicao.js";
 import { passarModal } from "./modal.js";
+import { calcularTotais } from "../services/calcularTotais.js";
+
 
 //Função para criar uma refeição
 export function criarRefeicao() {

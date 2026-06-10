@@ -1,14 +1,24 @@
 import { estado } from "../app/estados.js";
 
-const { planoSemanal } = estado.getState();
+export function calcularTotais() {
+  const { planoSemanal } = estado.getState();
+  const dias = planoSemanal.getDias();
+  const totais = new Map();
 
-const dias = planoSemanal.getDias();
-const refeicoes = dias.map(pegarRefeicoes);
-const itensRefeicao = refeicoes.map(pegarItensRefeicao);
+  for (const dia of dias) {
+    for (const refeicao of dia.getRefeicoes()) {
+      for (const item of refeicao.getItens()) {
+        const nome = item.getNomeItem();
 
-function pegarRefeicoes(dia) {
-  return dia.getRefeicoes();
-}
-function pegarItensRefeicao(refeicao) {
-  return refeicao.getItens();
+        if (!totais.has(nome)) {
+          totais.set(nome, {
+            ingrediente: nome,
+            peso: 0,
+          });
+        }
+        totais.get(nome).peso += item.getPeso();
+      }
+    }
+  }
+  return [...totais.values()];
 }
