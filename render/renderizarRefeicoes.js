@@ -6,14 +6,14 @@ export function renderizarRefeicoes(dia) {
   const displayDia = document.getElementById(dia.id); //Selecionando coluna pelo id do dia
 
   //se o dia tiver refeições, renderizar cada uma delas
-  if (dia.refeicoes.length > 0) {
-    for (let i = 0; i < dia.refeicoes.length; i++) {
+  if (dia.getRefeicoes().length > 0) {
+    for (let i = 0; i < dia.getRefeicoes().length; i++) {
       const div = document.createElement("div"); //Criando div para conter a refeição
       const tabela = document.createElement("table");
       const rTitulo = document.createElement("div");
       rTitulo.id = "rTitulo";
       const titulo = document.createElement("p");
-      const refDoDia = dia.refeicoes[i]; //Selecionando a refeição iterada
+      const refDoDia = dia.getRefeicoes()[i]; //Selecionando a refeição iterada
 
       const excbtnDisplay = document.createElement("div");
       excbtnDisplay.id = "excbtnDisplay";
@@ -48,12 +48,13 @@ export function renderizarRefeicoes(dia) {
       div.appendChild(tabela);
       displayDia.appendChild(div);
 
-      for (let i = 0; i < refDoDia.itens.length; i++) {
-        const itensRefDoDia = refDoDia.itens[i];
+      const todosItens = refDoDia.getItens();
+      for (let i = 0; i < todosItens.length; i++) {
+        const itensRefDoDia = todosItens[i];
         const rdata = document.createElement("tr");
         rdata.innerHTML = `
-          <td>${itensRefDoDia.ingrediente}</td>
-          <td>${itensRefDoDia.peso} g</td>
+          <td>${itensRefDoDia.getNomeItem()}</td>
+          <td>${itensRefDoDia.getPeso()} g</td>
         `;
         tabela.appendChild(rdata);
       }

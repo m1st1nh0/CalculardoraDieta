@@ -248,6 +248,7 @@ textarea {
   border-style: none;
   border: none;
   transition: all 0.3s ease-in-out;
+  font-size: var(--font-sm);
 }
 
 #submitModel1:hover {

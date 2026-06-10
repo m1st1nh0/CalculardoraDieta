@@ -1,19 +1,27 @@
 export class Dia {
+  #nome;
+  #refeicoes;
   constructor(nome, id) {
-    this.nome = nome;
+    this.#nome = nome;
     this.id = id;
-    this.refeicoes = [];
+    this.#refeicoes = [];
     this.proxId = 1;
   }
 
   //Funções
   adicionarRefeicao(refeicao) {
     refeicao.id = this.proxId;
-    this.refeicoes.push(refeicao);
+    this.#refeicoes.push(refeicao);
     this.proxId++;
-    
   }
   excluirRefeicao(id) {
-    this.refeicoes = this.refeicoes.filter((refeicao) => refeicao.id != id);
+    this.#refeicoes = this.#refeicoes.filter((refeicao) => refeicao.id != id);
+  }
+
+  getRefeicoes() {
+    return this.#refeicoes;
+  }
+  getNome() {
+    return this.#nome;
   }
 }

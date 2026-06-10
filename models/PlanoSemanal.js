@@ -1,7 +1,8 @@
 import { Dia } from "./Dia.js";
 export class PlanoSemanal {
+  #dias;
   constructor() {
-    this.dias = [];
+    this.#dias = [];
 
     //Instanciando os dias da semana
     const segunda = new Dia("Segunda-feira", "segunda");
@@ -12,6 +13,10 @@ export class PlanoSemanal {
     const sabado = new Dia("Sábado", "sabado");
     const domingo = new Dia("Domingo", "domingo");
 
-    this.dias.push(segunda, terca, quarta, quinta, sexta, sabado, domingo);
+    this.#dias.push(segunda, terca, quarta, quinta, sexta, sabado, domingo);
+  }
+
+  getDias() {
+    return this.#dias;
   }
 }

@@ -1,10 +1,10 @@
 import { ItemRefeicao } from "./ItemRefeicao.js";
 
 export class Refeicao {
+  #itens = [];
   constructor(nome) {
     this.validar(nome);
     this.nome = nome;
-    this.itens = [];
     this.proxId = 1;
     this.id = null;
   }
@@ -18,10 +18,14 @@ export class Refeicao {
   adicionarItem(ingrediente, peso) {
     const item = new ItemRefeicao(ingrediente, peso);
     item.id = this.proxId;
-    this.itens.push(item);
+    this.#itens.push(item);
     this.proxId++;
   }
   excluirItem(id) {
-    this.itens = this.itens.filter((item) => item.id != id);
+    this.#itens = this.#itens.filter((item) => item.id != id);
+  }
+
+  getItens() {
+    return this.#itens;
   }
 }

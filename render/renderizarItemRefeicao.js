@@ -21,7 +21,7 @@ export function renderizarItemRefeicao() {
   //Adicionar a tabela ao display
   displayItem.appendChild(tabela);
 
-  const itensRefeicao = refeicaoEmAndamento.itens; //Seleciona a lista dos itens da refeição em andamento
+  const itensRefeicao = refeicaoEmAndamento.getItens(); //Seleciona a lista dos itens da refeição em andamento
 
   //Cria uma linha na tabela cada item da refeição
   for (let i = 0; i < itensRefeicao.length; i++) {
@@ -30,8 +30,8 @@ export function renderizarItemRefeicao() {
     //configurações da linha
     row.id = item.id;
     row.innerHTML = `
-        <td>${typeof item.ingrediente === 'object' ? item.ingrediente.nome : item.ingrediente}</td>
-        <td>${item.peso}(g)</td>       
+        <td>${item.getNomeItem()}</td>
+        <td>${item.getPeso()}(g)</td>       
         
     `;
     //Criação do botaão de exclusão do item
