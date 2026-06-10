@@ -36,12 +36,6 @@ body {
   font-size: var(--font-md);
   color: var(--text-dark);
   background: var(--bg-panel);
-  }
-
-button,
-input,
-select,
-textarea {
 }
 
 /* Containeres */
@@ -90,8 +84,14 @@ textarea {
 #dashTotais {
   width: 280px;
   flex-shrink: 0;
-  background: linear-gradient(160deg, oklch(40% 0.08 145 / 0.92), oklch(30% 0.10 140 / 0.95));
-  box-shadow: var(--shadow-2), inset 0 1px 0 rgba(255,255,255,0.08);
+  background: linear-gradient(
+    160deg,
+    oklch(40% 0.08 145 / 0.92),
+    oklch(30% 0.1 140 / 0.95)
+  );
+  box-shadow:
+    var(--shadow-2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
@@ -101,7 +101,7 @@ textarea {
   max-height: 400px;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,0.2) transparent;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
   position: sticky;
   top: var(--space-5);
 }
@@ -110,7 +110,7 @@ textarea {
   width: 6px;
 }
 #dashTotais::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 3px;
 }
 
@@ -122,7 +122,7 @@ textarea {
   text-align: center;
   padding-bottom: var(--space-2);
   margin-bottom: var(--space-2);
-  border-bottom: 1px solid rgba(255,255,255,0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   letter-spacing: 0.5px;
   text-transform: uppercase;
   width: 100%;
@@ -150,8 +150,8 @@ textarea {
   font-size: var(--font-xs);
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  color: rgba(255,255,255,0.75);
-  border-bottom: 2px solid rgba(255,255,255,0.2);
+  color: rgba(255, 255, 255, 0.75);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 #tabelaTotais th:first-child {
@@ -164,7 +164,7 @@ textarea {
 
 #tabelaTotais td {
   padding: var(--space-1) var(--space-3);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   vertical-align: middle;
 }
 
@@ -182,11 +182,11 @@ textarea {
 }
 
 #tabelaTotais tbody tr:nth-child(even) td {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 #tabelaTotais tbody tr:hover td {
-  background: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .refeicao {
