@@ -1,317 +1,197 @@
-# 🥗 Calculadora de Dieta — Planejador Semanal de Refeições
+# Calculadora de Dietas
 
-> **Planejamento alimentar simples, modular e sem dependências.**  
-> Uma aplicação front-end 100% vanilla JavaScript para organizar refeições da semana, registrar ingredientes e quantidades, e calcular totais para facilitar as compras.
-
-[![Licence](https://img.shields.io/badge/licence-MIT-blue.svg)](LICENSE)
-[![JavaScript](https://img.shields.io/badge/JavaScript-ES%20Modules-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+> Planejador semanal de refeições — JavaScript puro, zero dependências.
 
 ---
 
-## 📋 Visão Geral
+## Funcionalidades Implementadas
 
-A **Calculadora de Dieta** é uma ferramenta de planejamento semanal de refeições construída inteiramente com tecnologias web padrão — HTML, CSS e JavaScript puro (ES Modules). Ela nasceu de uma necessidade prática: organizar o cardápio semanal, registrar a gramatura de cada ingrediente por refeição e somar os totais para facilitar a hora das compras.
-
-O projeto também serve como um exercício contínuo de engenharia de software, aplicando conceitos como **Domain-Driven Design (DDD)**, **SOLID**, **padrões de projeto** (Observer), **separação de camadas** e boas práticas de modelagem de domínio — tudo sem frameworks ou build tools.
-
----
-
-## ✨ Funcionalidades
-
-| Funcionalidade | Descrição |
-|---|---|
-| 🗓️ **Plano Semanal** | Criação automática dos 7 dias da semana |
-| 🍽️ **Gerenciamento de Refeições** | Adicionar até 5 refeições por dia |
-| 🥦 **Registro de Ingredientes** | Adicionar ingredientes com quantidade em gramas |
-| 📋 **Kanban Visual** | Interface estilo kanban para visualização dos dias |
-| ➕ **Limite de Refeições** | Controle de até 5 refeições por dia |
-| 🔍 **Detalhamento Expansível** | Clique no título da refeição para expandir/recolher itens |
-| 📊 **Dashboard de Totais** | Sidebar com total semanal de cada ingrediente |
-| 🗑️ **Exclusão de Itens** | Remover ingredientes ou refeições inteiras |
-| 🎨 **Tema Verde Moderno** | Design responsivo com variáveis CSS e tema verde |
-| 📱 **Responsivo** | Layout adaptável para desktop e mobile |
-| 🧩 **Modais Multi-etapa** | Fluxo guiado em 2 modais para criação de refeição |
-| 🧠 **Estado Reativo** | Gerenciamento de estado global com padrão Observer |
+- Criação automática de 7 dias (Segunda-feira a Domingo)
+- Adição de refeições a dias específicos (limite de 5 refeições por dia)
+- Adição de ingredientes com quantidade em gramas a cada refeição
+- Exclusão de refeições e ingredientes individuais
+- Visualização dos ingredientes de cada refeição com toggle expandir/recolher
+- Painel com totais semanais de cada ingrediente
+- Fluxo em dois modais: nome da refeição e ingredientes
+- Navegação entre modais (avançar/voltar/fechar)
+- Validação de entrada nos modelos de domínio
 
 ---
 
-## 🛠️ Stack Tecnológica
+## Stack Tecnológica
 
 | Categoria | Tecnologia |
-|---|---|
-| **Frontend** | HTML5, CSS3, JavaScript (ES Modules) |
-| **Gerenciamento de Estado** | StateManager (padrão Observer — implementação própria) |
-| **Tipografia** | Google Fonts (Roboto, Work Sans, Lato) |
-| **CSS Reset** | normalize.css v8.0.1 |
-| **Ferramentas de Build** | Nenhuma — zero dependências |
-| **Testes** | Não foi possível identificar infraestrutura de testes no código analisado |
+|-----------|------------|
+| Linguagem | JavaScript (ES Modules) |
+| Marcação | HTML5 |
+| Estilo | CSS3 |
+| CSS Reset | normalize.css v8.0.1 |
+| Tipografia | Google Fonts (Fascinate, Lato, Roboto, Work Sans) |
+| Gerenciamento de Estado | StateManager (implementação própria com padrão Observer) |
+| Build | Nenhum |
 
 ---
 
-## 🏗️ Arquitetura
+## Arquitetura
 
-### Separação em Camadas
-
-O projeto adota uma arquitetura modular inspirada nos princípios de **Domain-Driven Design** e **separação de responsabilidades**, dividida em 4 camadas principais:
+O código está organizado em camadas com separação de responsabilidades:
 
 ```
-┌─────────────────────────────────────────────────┐
-│                   main.js                        │
-│         (Composição raiz & Eventos)              │
-├──────────────────┬──────────────────────────────┤
-│   app/           │   ui/                         │
-│   (Orquestração) │   (Interação do usuário)      │
-├──────────────────┴──────────────────────────────┤
-│   render/                                       │
-│   (View — Renderização do DOM)                  │
-├─────────────────────────────────────────────────┤
-│   models/                                       │
-│   (Domínio — Regras de negócio puras)           │
-└─────────────────────────────────────────────────┘
+main.js        — Composição raiz e delegador de eventos
+app/           — Orquestração e estado global
+models/        — Domínio (regras de negócio sem dependência do DOM)
+render/        — Renderização do DOM
+ui/            — Interação do usuário (modais e formulários)
+services/      — Cálculos sobre os dados
 ```
 
-### Padrões Arquiteturais Identificados
-
-| Padrão | Onde é aplicado |
-|---|---|
-| **Observer** — `StateManager` | `app/estados.js` mantém uma lista de listeners e os notifica via `notify()` |
-| **Aggregate Root** — `PlanoSemanal` | Agregado raiz que encapsula `Dia` como entidade filha |
-| **Value Object** — `Ingrediente` | Objeto imutável identificado apenas por seu valor (nome) |
-| **Entity** — `Dia`, `Refeicao`, `ItemRefeicao` | Entidades com identidade própria (id) e ciclo de vida |
-| **Repository Pattern (conceitual)** | `app/estados.js` funciona como repositório central do agregado `PlanoSemanal` |
-| **Modular Pattern** — ES Modules | Cada arquivo exporta funções/classes específicas, com imports explícitos |
-
-### Fluxo de Dados
-
-1. **main.js** instancia `PlanoSemanal` e o registra no `StateManager`
-2. `atualizarKanban()` orquestra a renderização inicial
-3. O usuário interage via cliques → eventos delegados no `kanban`
-4. **ui/refeicaoForm.js** processa os formulários e modifica o estado
-5. **models/** validam e mantêm a integridade dos dados
-6. **render/** reconstroem partes específicas do DOM
-7. `renderizarTotais()` agrega dados da semana e exibe no dashboard
+Não foi possível identificar claramente um padrão arquitetural formal na implementação atual. Observa-se separação em camadas (domínio, aplicação, apresentação, interação) e uso de ES Modules.
 
 ### Modelo de Domínio
 
 ```
-PlanoSemanal (Aggregate Root)
-  └── Dia (Entity) — 7 instâncias (Segunda a Domingo)
-        └── Refeicao (Entity) — até 5 por dia
-              └── ItemRefeicao (Entity) — ingrediente + peso
-                    └── Ingrediente (Value Object) — nome do ingrediente
+PlanoSemanal
+  └── Dia (7 instâncias: Segunda-feira a Domingo)
+        └── Refeicao (até 5 por dia)
+              └── ItemRefeicao (ingrediente + peso)
+                    └── Ingrediente (nome)
 ```
 
 ---
 
-## 📁 Estrutura de Diretórios
+## Estrutura do Projeto
 
 ```
 CalculadoraDieta/
-├── index.html                  # 🚀 Ponto de entrada da aplicação
-├── main.js                     # 🧩 Composição raiz e delegador de eventos
-├── styles.css                  # 🎨 Estilos globais com variáveis CSS
-├── normalize.css               # 🔄 Reset CSS entre navegadores (CDN local)
-├── app/                        # ⚙️ Camada de aplicação
-│   ├── estados.js              #   StateManager — estado global reativo
-│   ├── atualizarKanban.js      #   Orquestrador da renderização completa
-│   └── limparTela.js           #   Utilitário de limpeza do DOM
-├── models/                     # 🧠 Camada de domínio (regras de negócio)
-│   ├── PlanoSemanal.js         #   Agregado raiz do plano semanal
-│   ├── Dia.js                  #   Dia da semana (entidade)
-│   ├── Refeicao.js             #   Refeição composta por itens (entidade)
-│   ├── ItemRefeicao.js         #   Item com ingrediente + peso (entidade)
-│   └── Ingrediente.js          #   Value Object: nome do ingrediente
-├── render/                     # 🎭 Camada de view (renderização DOM)
-│   ├── renderizarSemana.js     #   Itera os dias e renderiza cada um
-│   ├── renderizarDia.js        #   Cria coluna visual do dia
-│   ├── renderizarRefeicoes.js  #   Renderiza refeições com toggle de itens
-│   ├── renderizarItemRefeicao.js # Tabela de ingredientes no modal
-│   ├── renderizarModal.js      #   Conteúdo HTML dos modais
-│   ├── renderizarBotao.js      #   Botão "+" para adicionar refeição
-│   └── renderizarTotais.js     #   Dashboard de totais semanais
-└── ui/                         # 🖱️ Camada de interação
-    ├── modal.js                #   Controle de abertura/fechamento de modais
-    └── refeicaoForm.js         #   Lógica dos formulários de criação
+├── index.html
+├── main.js
+├── styles.css
+├── normalize.css
+├── app/
+│   ├── estados.js            — StateManager e instância global
+│   ├── atualizarKanban.js    — Orquestra renderização completa
+│   └── limparTela.js         — Limpa conteúdo do elemento kanban
+├── models/
+│   ├── PlanoSemanal.js       — Agregado raiz com 7 dias
+│   ├── Dia.js                — Dia da semana com refeições
+│   ├── Refeicao.js           — Refeição com itens
+│   ├── ItemRefeicao.js       — Item com ingrediente e peso
+│   └── Ingrediente.js        — Ingrediente (nome)
+├── render/
+│   ├── renderizarSemana.js   — Itera dias e renderiza cada um
+│   ├── renderizarDia.js      — Cria coluna visual do dia
+│   ├── renderizarRefeicoes.js— Renderiza refeições com toggle
+│   ├── renderizarItemRefeicao.js — Tabela de ingredientes no modal
+│   ├── renderizarModal.js    — Conteúdo HTML dos modais
+│   ├── renderizarBotao.js    — Botão "+" para adicionar refeição
+│   └── renderizarTotais.js   — Painel de totais semanais
+├── services/
+│   └── calcularTotais.js     — Agrega pesos dos ingredientes
+└── ui/
+    ├── modal.js              — Abertura, fechamento e navegação de modais
+    └── refeicaoForm.js       — Criação de refeições e itens
 ```
 
-### Descrição das Pastas
+### Descrição dos Diretórios
 
-| Pasta | Responsabilidade |
-|---|---|
-| **`app/`** | Camada de orquestração e estado global da aplicação. Coordena o fluxo entre UI, modelos e renderização. |
-| **`models/`** | Camada de domínio puro. Contém as classes de negócio sem qualquer dependência do DOM ou da interface. |
-| **`render/`** | Camada de apresentação. Funções responsáveis exclusivamente por construir e atualizar elementos do DOM. |
-| **`ui/`** | Camada de controle/interação. Lida com eventos do usuário, formulários e manipulação de modais. |
-
----
-
-## ✅ Pré-requisitos
-
-- Um **navegador web moderno** (Chrome, Firefox, Edge, Safari — versões lançadas a partir de 2020)
-- **VS Code** (recomendado) com a extensão **Live Server** (opcional, para recarregamento automático)
-- **Nenhuma dependência** — o projeto não requer Node.js, npm, Docker ou qualquer outra ferramenta
+| Diretório | Responsabilidade |
+|-----------|------------------|
+| `app/` | Orquestração da aplicação e estado global reativo |
+| `models/` | Classes de domínio com regras de negócio, sem dependência do DOM |
+| `render/` | Funções que constroem e atualizam elementos do DOM |
+| `ui/` | Controle de modais, formulários e interação do usuário |
+| `services/` | Funções de cálculo sobre os dados do domínio |
 
 ---
 
-## 📦 Instalação
+## Pré-requisitos
 
-```bash
-# Clone o repositório
+- Navegador web com suporte a ES Modules (Chrome, Firefox, Edge, Safari — versões a partir de 2020)
+- Nenhuma dependência de runtime (Node.js, npm, Docker)
+
+---
+
+## Instalação
+
+```
 git clone https://github.com/m1st1nh0/CalculardoraDieta.git
-
-# Entre no diretório
 cd CalculardoraDieta
-
-# Pronto! Sem dependências para instalar 🎉
 ```
 
 ---
 
-## ⚙️ Configuração
+## Configuração
 
-Não foram identificados arquivos de configuração (`.env`, `config.json`, etc.) no código analisado. O projeto funciona sem configuração adicional.
-
----
-
-## 🚀 Execução
-
-### Desenvolvimento
-
-Abra o arquivo `index.html` diretamente no navegador:
-
-```bash
-# Opção 1 — Abrir diretamente (Windows)
-start index.html
-```
-
-Ou utilizando o **Live Server** no VS Code:
-
-1. Clique com o botão direito no `index.html`
-2. Selecione **"Open with Live Server"**
-
-### Produção
-
-O projeto não requer build ou etapa de produção. Basta hospedar a pasta do projeto em qualquer servidor web estático (GitHub Pages, Netlify, Vercel, etc.).
-
-> ⚠️ **Importante:** Como o projeto usa ES Modules (`type="module"`), o arquivo `index.html` deve ser servido por um servidor HTTP (local ou remoto). A abertura direta do arquivo (`file://`) pode ser bloqueada por políticas de CORS em alguns navegadores.
+Não foi possível identificar arquivos de configuração no código analisado. O projeto não possui variáveis de ambiente ou arquivos de configuração.
 
 ---
 
-## 📜 Scripts Disponíveis
+## Execução
 
-Não foram identificados scripts de automação (npm scripts, Makefile, etc.) no código analisado. O projeto não utiliza task runners ou bundlers.
+O projeto deve ser servido por um servidor HTTP devido ao uso de ES Modules (`type="module"`). Abra o arquivo `index.html` via servidor local.
 
----
+Opções:
 
-## 🌐 API
-
-Não foram identificados endpoints de API REST ou serviços externos no código analisado. A aplicação é **100% client-side** e não realiza chamadas de rede.
-
----
-
-## 🗄️ Banco de Dados
-
-Não foram identificados bancos de dados, ORMs ou sistemas de persistência externa no código analisado. Todos os dados são mantidos exclusivamente em memória durante a sessão do navegador.
+- VS Code com extensão Live Server: clique com o botão direito em `index.html` → "Open with Live Server"
+- Qualquer servidor HTTP estático (Python http.server, http-server, etc.)
 
 ---
 
-## 🧪 Testes
+## Scripts Disponíveis
 
-Não foi possível identificar infraestrutura de testes automatizados (frameworks, configurações, suites de teste) no código analisado.
-
----
-
-## ☁️ Deploy
-
-### Hospedagem Estática
-
-O projeto pode ser deployado em qualquer serviço de hospedagem estática:
-
-| Plataforma | Como fazer |
-|---|---|
-| **GitHub Pages** | Faça push do repositório e habilite GitHub Pages nas settings |
-| **Netlify** | Conecte o repositório ou faça drag-and-drop da pasta |
-| **Vercel** | Importe o repositório e configure como static export |
-| **Cloudflare Pages** | Conecte o repositório e faça deploy |
-
-### Docker
-
-Não foram identificados arquivos Docker (Dockerfile, docker-compose.yml) no código analisado.
-
-### CI/CD
-
-Não foram identificados pipelines de CI/CD (GitHub Actions, GitLab CI, etc.) no código analisado.
+Não foi possível identificar scripts de automação no código analisado.
 
 ---
 
-## 🔒 Segurança
+## API
 
-- **Validação de entrada:** As classes `Ingrediente` e `Refeicao` validam seus parâmetros no construtor, lançando erros para dados inválidos
-- **Tratamento de erros:** `try/catch` nos formulários com feedback via `alert()` ao usuário
-- **Campos privados:** Uso de `#` (private class fields) nos atributos sensíveis das classes de modelo
-- **Autenticação/Autorização:** Não foi possível identificar mecanismos de autenticação no código analisado (aplicação client-side sem backend)
+Não foi possível identificar endpoints de API. A aplicação é 100% client-side e não realiza requisições de rede.
 
 ---
 
-## 📊 Monitoramento e Logs
+## Banco de Dados
 
-- **Logs de desenvolvimento:** `console.log()` presente em `ui/refeicaoForm.js` e `render/renderizarRefeicoes.js` para depuração
-- Não foram identificados sistemas de monitoramento, métricas ou observabilidade (APM, analytics, etc.)
-
----
-
-## 🗺️ Roadmap
-
-Sugestões de melhorias futuras baseadas na análise do código:
-
-| Prioridade | Melhoria | Justificativa |
-|---|---|---|
-| 🔴 Alta | **Persistência de dados** (LocalStorage) | Dados são perdidos ao recarregar a página |
-| 🔴 Alta | **Testes automatizados** | Sem cobertura de testes, risco de regressão |
-| 🟡 Média | **Build tool** (Vite ou similar) | Para minificação, HMR e compatibilidade |
-| 🟡 Média | **Componentização com template strings** | Reduzir repetição de HTML nos renderizadores |
-| 🟡 Média | **Feedback visual** (toasts/notificações) | Substituir `alert()` por algo mais elegante |
-| 🟢 Baixa | **Exportar lista de compras** (CSV/PDF) | Facilitar ida ao supermercado |
-| 🟢 Baixa | **Modo escuro** | Acessibilidade e conforto visual |
-| 🟢 Baixa | **PWA** (Service Worker + manifest) | Uso offline e instalação como app |
-| 🟢 Baixa | **Internacionalização (i18n)** | Suporte a múltiplos idiomas |
+Não foi possível identificar banco de dados, ORM ou sistema de persistência. Todos os dados são mantidos em memória durante a sessão do navegador.
 
 ---
 
-## 🤝 Contribuição
+## Testes
 
-Contribuições são bem-vindas! Este é um projeto pessoal de aprendizado, então toda ajuda é valorizada.
-
-1. **Fork** o repositório
-2. Crie uma **branch** para sua feature (`git checkout -b feat/nova-feature`)
-3. **Commit** suas mudanças (`git commit -m 'feat: adiciona nova funcionalidade'`)
-4. **Push** para a branch (`git push origin feat/nova-feature`)
-5. Abra um **Pull Request**
-
-### Diretrizes
-
-- Mantenha o estilo de código existente
-- Use nomes descritivos em português ou inglês (consistente com o código atual)
-- Teste manualmente no navegador antes de abrir o PR
-- Atualize a documentação se necessário
+Não foi possível identificar infraestrutura de testes automatizados no código analisado.
 
 ---
 
-## 📄 Licença
+## Docker
 
-Distribuído sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) para mais informações.
-
----
-
-## 🙏 Agradecimentos
-
-- [normalize.css](https://necolas.github.io/normalize.css/) — Reset CSS confiável
-- [Google Fonts](https://fonts.google.com/) — Tipografia de qualidade
+Não foi possível identificar arquivos Docker (Dockerfile, docker-compose.yml) no código analisado.
 
 ---
 
-<div align="center">
-  <sub>Construído com ❤️ e JavaScript puro — sem frameworks, sem atalhos.</sub>
-</div>
+## CI/CD
+
+Não foi possível identificar pipelines de CI/CD no código analisado.
+
+---
+
+## Segurança
+
+- `Ingrediente`, `Refeicao` e `ItemRefeicao` validam parâmetros no construtor
+- `ItemRefeicao.validarPeso` rejeita valores não numéricos, menores ou iguais a zero
+- Tratamento de erros com `try/catch` e `alert()` nos formulários
+- Não foi possível identificar mecanismos de autenticação ou autorização
+
+---
+
+## Limitações Identificadas
+
+- Os dados são perdidos ao recarregar a página (ausência de persistência)
+- Não foram encontrados testes automatizados
+- O parâmetro `calorias` no construtor de `Ingrediente` não é utilizado na interface ou nos cálculos de totais
+- `console.log()` presente em `ui/refeicaoForm.js` e `render/renderizarRefeicoes.js` para depuração
+
+---
+
+## Licença
+
+Distribuído sob licença MIT. Consulte o arquivo [`LICENSE`](LICENSE).
+</write_to_file>
