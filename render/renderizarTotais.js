@@ -3,7 +3,11 @@ import { calcularTotais } from "../services/calcularTotais.js";
 
 export function renderizarTotais() {
   const container = document.getElementById("container");
-  const dashTotais = document.createElement("div");
+  let dashTotais = document.getElementById("dashTotais");
+
+  if (!dashTotais) {
+    dashTotais = document.createElement("div");
+  }
   dashTotais.id = "dashTotais";
   dashTotais.innerHTML = `
         <div id="tituloTotais">Totais da Semana</div>

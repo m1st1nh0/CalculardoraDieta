@@ -8,7 +8,7 @@ import { renderizarTotais } from "../render/renderizarTotais.js";
 export function atualizarKanban(kanban) {
   //Pega o plano semanal setado em estado
   const {planoSemanal} = estado.getState();
-
+  const container = document.getElementById('container')
   //Limpa a tela do kanban, renderiza os modais e renderiza a semana no kanban
   limparTela(kanban);
   renderizarModal(kanban);
